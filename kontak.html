@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab SIJA • Kontak</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f6f9fc 0%, #e9f0f5 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: #0b2a3b;
+      padding: 0.9rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 20px rgba(0,20,30,0.2);
+      border-bottom: 4px solid #00b4d8;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: white;
+    }
+
+    .logo-icon {
+      background: #00b4d8;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #0b2a3b;
+      box-shadow: 0 4px 8px rgba(0,180,216,0.4);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+    }
+    .logo-text span {
+      color: #00b4d8;
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+    }
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: 0.2s;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      color: #00b4d8;
+      border-bottom-color: #00b4d8;
+    }
+    .nav-links a.active {
+      color: #00b4d8;
+      border-bottom-color: #00b4d8;
+    }
+    .nav-links a i {
+      margin-right: 6px;
+    }
+
+    .nav-extra {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .badge-status {
+      background: #1e4a5f;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      color: #b3e4f5;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border: 1px solid #2f6b82;
+    }
+    .badge-status i {
+      color: #5cdb9e;
+      margin-right: 6px;
+    }
+
+    .main-container {
+      flex: 1;
+      margin: 2rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .page-header {
+      grid-column: 1 / -1;
+      margin-bottom: 0.5rem;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+      color: #0b2a3b;
+    }
+    .page-header p {
+      color: #3a5f6f;
+      font-size: 1.1rem;
+    }
+
+    .kontak-card {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .kontak-card h2 {
+      color: #0b2a3b;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+    .kontak-card h2 i {
+      color: #00b4d8;
+      margin-right: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .info-item .icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(0,180,216,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00b4d8;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .info-item .detail h4 {
+      color: #0b2a3b;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    .info-item .detail p {
+      color: #2d5466;
+      font-size: 0.95rem;
+    }
+
+    .map-container {
+      margin-top: 1rem;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #d4eaf3;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b2a3b;
+      font-size: 1rem;
+      border: 2px dashed #00b4d8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.5rem 1.2rem;
+      background: rgba(11,42,59,0.06);
+      border-radius: 60px;
+      text-decoration: none;
+      color: #0b2a3b;
+      font-weight: 500;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+    .social-links a:hover {
+      background: rgba(0,180,216,0.1);
+      border-color: #00b4d8;
+      transform: translateY(-2px);
+    }
+    .social-links a i {
+      font-size: 1.2rem;
+      color: #00b4d8;
+    }
+
+    .footer {
+      background: #0b2a3b;
+      color: rgba(255,255,255,0.7);
+      padding: 1.5rem 5%;
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      border-top: 3px solid #00b4d8;
+    }
+    .footer-left i {
+      color: #00b4d8;
+      margin-right: 4px;
+    }
+    .footer-right a {
+      color: #b3d9e8;
+      margin-left: 1.2rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    .footer-right a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .main-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo-area">
+    <div class="logo-icon"><i class="fas fa-network-wired"></i></div>
+    <div class="logo-text">Lab<span>SIJA</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
+    <a href="laboratorium.html"><i class="fas fa-flask"></i> Laboratorium</a>
+    <a href="tim.html"><i class="fas fa-users"></i> Tim</a>
+    <a href="jadwal.html"><i class="fas fa-calendar-alt"></i> Jadwal</a>
+    <a href="kontak.html" class="active"><i class="fas fa-envelope"></i> Kontak</a>
+  </div>
+  <div class="nav-extra">
+    <span class="badge-status"><i class="fas fa-circle"></i> Lab aktif</span>
+    <i class="fas fa-user-circle" style="color:white; font-size:1.8rem; opacity:0.7;"></i>
+  </div>
+</nav>
+
+<div class="main-container">
+  <div class="page-header">
+    <h1><i class="fas fa-envelope" style="color:#00b4d8;"></i> Hubungi Kami</h1>
+    <p>Informasi kontak dan lokasi Laboratorium SIJA.</p>
+  </div>
+
+  <div class="kontak-card">
+    <h2><i class="fas fa-address-card"></i> Informasi Kontak</h2>
+    
+    <div class="info-item">
+      <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="detail">
+        <h4>Alamat</h4>
+        <p>Gedung Teknik Lt. 3, Ruang 3.07<br>Kampus Universitas Teknologi Nusantara<br>Jl. Merdeka No. 123, Jakarta</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon"><i class="fas fa-phone"></i></div>
+      <div class="detail">
+        <h4>Telepon</h4>
+        <p>(021) 555-1234 (ext. 307)</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon"><i class="fas fa-envelope"></i></div>
+      <div class="detail">
+        <h4>Email</h4>
+        <p>lab.sija@utn.ac.id</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon"><i class="fas fa-clock"></i></div>
+      <div class="detail">
+        <h4>Jam Operasional</h4>
+        <p>Senin – Jumat: 08.00 – 17.00<br>Sabtu: 10.00 – 14.00 (khusus riset)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kontak-card">
+    <h2><i class="fas fa-globe"></i> Lokasi & Sosial Media</h2>
+    
+    <div class="map-container">
+      <i class="fas fa-map" style="font-size: 2rem; margin-right: 10px;"></i>
+      <span>Google Maps – Lab SIJA (Kampus UTN)</span>
+    </div>
+
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i> GitHub</a>
+      <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+    </div>
+
+    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,180,216,0.08); border-radius: 16px;">
+      <p style="color: #0b2a3b; font-weight: 500;">
+        <i class="fas fa-info-circle" style="color:#00b4d8;"></i> 
+        Kunjungi lab kami untuk konsultasi dan diskusi penelitian!
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">
+    <i class="fas fa-flask"></i> Lab SIJA – v.2026
+  </div>
+  <div class="footer-center">
+    <i class="fas fa-circle" style="color:#5cdb9e; font-size: 0.5rem; vertical-align: middle;"></i> 
+    <span style="margin-left: 4px;">Sistem Informasi Jaringan & Aplikasi</span>
+  </div>
+  <div class="footer-right">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+</body>
+</html>
